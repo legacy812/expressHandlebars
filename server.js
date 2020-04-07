@@ -1,22 +1,14 @@
-require('dotenv').config()
-const express = require('express');
-const { join } = require('path');
+const express = require('express')
+const { join } = require('path')
 
-const app = express();
+const app = express()
 
-app.engine('jsx', require('express-react-views').createEngine());
-app.use(express.static(join(__dirname, 'public')));
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.set('views', join(__dirname, 'views'));
-app.set('view engine', 'jsx');
-
-
-app.use(require('./routes'));
+app.set('views', join(__dirname, 'views'))
+app.set('view engine', 'jsx')
+app.engine('jsx', require('express-react-views').createEngine())
 
 app.get('/', (req, res) => {
-  res.render('home');
-});
+  res.render('home')
+})
 
-
-app.listen(process.env.PORT || 3000);
+app.listen(3000)
